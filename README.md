@@ -1,8 +1,4 @@
----
-title: "Welcome to the pelotonR Package"
-author: "Laura Ellis"
----
-
+# Welcome to pelotonR
 
 <img src="logo.png" width="160px" align="right" />
 
