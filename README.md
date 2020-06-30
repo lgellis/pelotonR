@@ -20,7 +20,7 @@ The package offers a set of easy to use functions which allow the user to:
 
 <br/>
 
-# To get started:
+# Getting Started
 
 ### 1) Please install the package
 <br/>
