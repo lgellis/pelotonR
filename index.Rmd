@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "pelotonR Getting Started Guide"
 author: "Laura Ellis"
 date: "6/30/2020"
 output: html_document
@@ -14,7 +14,6 @@ knitr::opts_chunk$set(echo = TRUE)
 # About the Package
 
 The pelotonR package was created to provide users with simple access to the Peloton API through R.  
-
 
 The Peloton APIs are unsupported.  However, [there are some really great unofficial swagger docs](https://app.swaggerhub.com/apis/DovOps/peloton-unofficial-api/0.2.3) which I used to familiarize myself with the API.
 
