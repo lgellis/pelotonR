@@ -24,10 +24,8 @@ The package offers a set of easy to use functions which allow the user to:
 
 ### 1) Please install the package
 <br/>
- ```
- devtools::install_github("lgellis/pelotonR")
- ```
- <br/>
+ `devtools::install_github("lgellis/pelotonR")`
+<br/>
  
 ### 2) Please check out the [pelotonR getting started guide](https://lgellis.github.io/pelotonR/)
 <br/>
