@@ -11,7 +11,6 @@ This function will gather the workout counts by category for the current authent
 }
 \examples{
 get_my_workout_stats_df()
-
 }
 \keyword{DataFrame}
 \keyword{authenticated,}

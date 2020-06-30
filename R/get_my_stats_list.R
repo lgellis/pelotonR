@@ -5,11 +5,10 @@
 #' @export
 #' @examples
 #' get_my_stats_list()
-#'
 get_my_stats_list <- function() {
-  
-  #Gather stats info via API
-  request  <- httr::GET("https://api.onepeloton.com/api/me")
-  my_personal_stats_df <-  jsonlite::fromJSON(rawToChar(request$content))
+
+  # Gather stats info via API
+  request <- httr::GET("https://api.onepeloton.com/api/me")
+  my_personal_stats_df <- jsonlite::fromJSON(rawToChar(request$content))
   return(my_personal_stats_df)
 }

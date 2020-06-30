@@ -12,8 +12,8 @@ authenticate(username, password)
 \item{password}{Your Peloton password.}
 }
 \description{
-This function allows you to authenticate with the Peloton API to pull your details and workout stats.  
-In this function you are able to pass in your `username` and `password`.  If you pass in no value, 
+This function allows you to authenticate with the Peloton API to pull your details and workout stats.
+In this function you are able to pass in your `username` and `password`.  If you pass in no value,
 the system will prompt you for a user name and password.
 }
 \examples{

@@ -5,12 +5,11 @@
 #' @keywords Peloton, ride, list
 #' @export
 #' @examples
-#' get_ride_info_list('55214456a1984c5885a087021e3f67b7')
-
+#' get_ride_info_list("55214456a1984c5885a087021e3f67b7")
 get_ride_info_list <- function(ride_id) {
-  
-  #Gather ride info via API
+
+  # Gather ride info via API
   request <- httr::GET(paste0("https://api.onepeloton.com/api/ride/", ride_id, "/details?stream_source=multichannel"))
-  ride <-  jsonlite::fromJSON(rawToChar(request$content))$ride
+  ride <- jsonlite::fromJSON(rawToChar(request$content))$ride
   return(ride)
 }

@@ -10,12 +10,11 @@ get_workouts_and_instructors_df(user_id)
 \item{user_id}{Your Peloton user id.}
 }
 \description{
-This function will gather all individual workouts and all related instructor data for a user and 
+This function will gather all individual workouts and all related instructor data for a user and
 return it in a data frame. If a user id is not passed into the function, it will return the current users workouts.
 }
 \examples{
 get_workouts_and_instructors_df()
-
 }
 \keyword{DataFrame}
 \keyword{Peloton,}

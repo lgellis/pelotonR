@@ -13,7 +13,7 @@ get_ride_info_list(ride_id)
 This function returns a list with all information related to a particular ride.
 }
 \examples{
-get_ride_info_list('55214456a1984c5885a087021e3f67b7')
+get_ride_info_list("55214456a1984c5885a087021e3f67b7")
 }
 \keyword{Peloton,}
 \keyword{list}

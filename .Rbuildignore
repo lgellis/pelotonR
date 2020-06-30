@@ -1,0 +1,6 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^_config\.yml$
+^index\.Rmd$
+^index\.html$
+^logo\.png$

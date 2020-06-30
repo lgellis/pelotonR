@@ -13,7 +13,7 @@ get_basic_ride_info_df(ride_id)
 This function returns a data frame with a subset of information related to a particular ride.
 }
 \examples{
-get_basic_ride_info_df('55214456a1984c5885a087021e3f67b7')
+get_basic_ride_info_df("55214456a1984c5885a087021e3f67b7")
 }
 \keyword{DataFrame}
 \keyword{Peloton,}

@@ -11,7 +11,6 @@ This function will gather all stats for the current authenticated user and retur
 }
 \examples{
 get_my_stats_list()
-
 }
 \keyword{Peloton,}
 \keyword{authenticated,}

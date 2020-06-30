@@ -13,8 +13,8 @@ get_metadata_mapping_df(type)
 This function returns a data frame of metadata available on Peloton for a particular category type.
 }
 \examples{
-get_metadata_mapping_df('fitness_disciplines')
-get_metadata_mapping_df('equipment')
+get_metadata_mapping_df("fitness_disciplines")
+get_metadata_mapping_df("equipment")
 }
 \keyword{DataFrame}
 \keyword{Peloton,}
