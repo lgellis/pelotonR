@@ -1,0 +1,29 @@
+Package: pelotonR
+Type: Package
+Title: PelotonR Pulls Data From The Peloton Apis
+Version: 0.1.0
+Authors@R: person("Laura", "Ellis", email = "lauraghammond@gmail.com",
+  		role = c("aut", "cre"))
+Description: pelotonR pulls data from the Peloton APIs.
+Encoding: UTF-8
+License: MIT + file LICENSE
+LazyData: true
+RoxygenNote: 7.1.1
+Imports: 
+    usethis,
+    httr,
+    jsonlite,
+    dplyr,
+    magrittr,
+    data.table, 
+    tibble,
+    getPass,
+    lubridate
+Suggests: 
+    knitr,
+    rmarkdown,
+    tidyverse,
+    gameofthrones,
+    DT, 
+    Hmisc
+VignetteBuilder: knitr

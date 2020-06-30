@@ -1,0 +1,16 @@
+---
+title: "Introduction"
+output: html
+
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pelotonR)
+```
