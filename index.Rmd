@@ -32,6 +32,8 @@ The package offers a set of easy to use functions which allow the user to:
 Before we start exploring the pelotonR package, we will load a few libraries used to help explore and display the data.
 
 ```{r echo=TRUE, message=TRUE}
+#Uncomment the line below if you also need to install pelotonR
+# devtools::install_github("lgellis/pelotonR")
 library("pelotonR")
 #Packages for nice output display
 library(DT) # For table display
