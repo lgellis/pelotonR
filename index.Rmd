@@ -37,6 +37,7 @@ library("pelotonR")
 library(DT) # For table display
 library(Hmisc) # For list display
 library(tidyverse) # For data munging
+library(lubridate) # For dates
 library(gameofthrones) # For colors
 ```
 
@@ -245,7 +246,9 @@ datatable(workouts_and_instructors, extensions = "Scroller", width = 1000, optio
 ```
 
 
-### Plot Workout Data Frame
+### Create some Fun Graphs
+
+#### Progress Line Chart
 
 When you get your workout stats, you can plot a simple progress line chart with ggplot2.  The color palette is from the fabulous [game of thrones package](https://github.com/aljrico/gameofthrones) by [Alejandro Jiménez](https://twitter.com/aljrico).
 
@@ -265,6 +268,7 @@ p <- workouts_and_instructors %>%
 p
 ```
 
+#### Favorite Instructors Month to Month
 
 We can also create a 100% stacked bar chart with the breakdown in percentage of workouts by instructor and month.  
 
@@ -285,8 +289,37 @@ g
 
 ```
 
+#### Density of Workouts per Day of Week and Hour Block
+
+We can plot which days of week and hours of day we tend to work out.  The steps below are pretty compact, but the logic is to create the necessary time/date columns with the `mutate` function, filter to only the columns needed with the `select` function, create a summary table of total workouts by hour and day with the`group_by` and `summarize` functions and then create a heatmap with `ggplot` and `geom_tile`.
+
+
+```{r}
+
+col1 = "#D7E7EC"
+col2 = "#82B5C4"
+
+library(lubridate)
+workouts_and_instructors %>%
+  mutate(workout.start_time_cst = with_tz(workout.start_timestamp,  tzone = "America/Chicago"),
+         workout.start_day = wday(workout.start_time_cst, label = TRUE, abbr = FALSE,   week_start = getOption("lubridate.week.start", 1)),
+         workout.start_hour = hour(workout.start_time_cst)) %>%
+  select (workout.peloton.ride.description, workout.start_day, workout.start_hour) %>%
+  group_by(workout.start_day, workout.start_hour) %>%
+  dplyr::summarize(N = length(workout.peloton.ride.description)) %>%
+  ggplot( aes(workout.start_hour, workout.start_day)) + geom_tile(aes(fill = N),colour = "white", na.rm = TRUE) +
+  scale_fill_gradient(low = col1, high = col2) +
+  guides(fill=guide_legend(title="Total Incidents")) +
+  theme_bw() + theme_minimal() +
+  labs(title = "Density of Workouts per Day of Week and Hour Block",
+       x = "Hour Block", y = "Day of Week") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none")
+
+
+```
+
 
 # Thank You
 
-Thank you for trying out my pelotonR package!  If like the package, please share your results with me on [twitter](https://twitter.com/littlemissdata)!
+Thank you for trying out my pelotonR package!  If you like the package, please share your results with me on [twitter](https://twitter.com/littlemissdata)!
 
