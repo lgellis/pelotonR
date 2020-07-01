@@ -294,9 +294,9 @@ g
 We can plot which days of week and hours of day we tend to work out.  The steps below are pretty compact, but the logic is to create the necessary time/date columns with the `mutate` function, filter to only the columns needed with the `select` function, create a summary table of total workouts by hour and day with the`group_by` and `summarize` functions and then create a heatmap with `ggplot` and `geom_tile`.
 
 
-```{r fig.width=10,fig.height=7}
+```{r fig.width=10,fig.height=5}
 
-col1 = "#D7E7EC"
+col1 = "#ced4d6"
 col2 = "#82B5C4"
 
 workouts_and_instructors %>%
