@@ -294,12 +294,11 @@ g
 We can plot which days of week and hours of day we tend to work out.  The steps below are pretty compact, but the logic is to create the necessary time/date columns with the `mutate` function, filter to only the columns needed with the `select` function, create a summary table of total workouts by hour and day with the`group_by` and `summarize` functions and then create a heatmap with `ggplot` and `geom_tile`.
 
 
-```{r}
+```{r fig.width=10,fig.height=7}
 
 col1 = "#D7E7EC"
 col2 = "#82B5C4"
 
-library(lubridate)
 workouts_and_instructors %>%
   mutate(workout.start_time_cst = with_tz(workout.start_timestamp,  tzone = "America/Chicago"),
          workout.start_day = wday(workout.start_time_cst, label = TRUE, abbr = FALSE,   week_start = getOption("lubridate.week.start", 1)),
