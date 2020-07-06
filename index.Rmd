@@ -319,6 +319,24 @@ workouts_and_instructors %>%
 
 ```
 
+# Other Ideas
+
+If you're trying to think about other cool ideas that you can do with this data, below are a few things which I thought could be neat to do:
+
+ - It would be cool to do a [bar race animation chart](https://www.r-bloggers.com/how-to-create-bar-race-animation-charts-in-r/) to show your preferences over time.
+ - Most of the data sets have some image element (ie `workout.peloton.ride.image_url`and `instructor.instructor_hero_image_url`).  I think it would be nice to do a graph with those images used.  Possibly in a [scatter plot](https://stackoverflow.com/questions/2181902/how-to-use-an-image-as-a-point-in-ggplot), [or as a background](https://cran.r-project.org/web/packages/meme/vignettes/meme.html) or hopefully something even more creative.
+ - Add one of the many [giphy peloton stickers](https://giphy.com/search/peloton-stickers) to your graph with the magick package.  [Tutorial here](https://www.littlemissdata.com/blog/lacroix)
+ - I think it would be great to start analyzing more performance based metrics.  You could plot `workout.total_work`, `workout.total_video_watch_time_seconds`/`workout.peloton.ride.duration`, any of the difficulty measures or ride times and more.
+ - Perform a [tidy text](https://www.tidytextmining.com/) analysis on any of the ride or instructor description columns.  
+ 
+
+# Discover More
+
+At the time of releasing the package, I realized there are a few other Peloton R packages out there.  I haven’t had the chance to check them out yet but if you’re looking to round the bases on R Peloton packages, I encourage you to check give them a try.  They both seem to have some interesting performance data!
+
+ - [bweiher/pelotonR](https://github.com/bweiher/pelotonR)
+ - [elliotpalmer/pelotonr](https://github.com/elliotpalmer/pelotonr)
+
 
 # Thank You
 
