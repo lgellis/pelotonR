@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <img src="logo.png" width="160px" align="right" />
 
+
 # About the Package
 
 The pelotonR package was created to provide users with simple access to the Peloton API through R.  
@@ -27,6 +28,7 @@ The package offers a set of easy to use functions which allow the user to:
 * Gather full data sets in one function call without having to handle paged API calls.
 * Gather joined data sets in one function call.
 
+
 # Load the Libraries
 
 Before we start exploring the pelotonR package, we will load a few libraries used to help explore and display the data.
@@ -42,6 +44,7 @@ library(tidyverse) # For data munging
 library(lubridate) # For dates
 library(gameofthrones) # For colors
 ```
+
 
 # Unauthenticated API Calls
 
@@ -88,6 +91,7 @@ ride_info <- get_ride_info_list('55214456a1984c5885a087021e3f67b7')
 list.tree(ride_info)
 ```
 
+
 ## Get Peloton Ride Data Frame
 
 The function `get_ride_info_df` allows us to gather the basic ride information for a particular ride into a data frame.
@@ -100,6 +104,7 @@ ride_info <- get_basic_ride_info_df('55214456a1984c5885a087021e3f67b7')
 #Nicely display data
 datatable(ride_info, extensions = "Scroller", width = 1000, options = list(scrollY = 75, scroller = TRUE, scrollX = 600, pageLength = 5))
 ```
+
 
 ## Get Peloton Instructors Data Frame
 
@@ -130,6 +135,7 @@ live_with_details <- get_live_ride_and_details_df()
 datatable(live_with_details, extensions = "Scroller", width = 1000, options = list(scrollY = 400, scroller = TRUE, scrollX = 600, pageLength = 5))
 ```
 
+
 ### Plot Ride Data
 
 Now that we have a data frame with all live rides and their metadata, we will do a simple plot to display some of the details of the live rides available.  In this example, we are plotting the count of live rides by instructor. 
@@ -151,7 +157,6 @@ p
 ```
 
 
-
 # Authenticate with Peloton
 
 The function `authenticate(username, password)` allows the user to authenticate with the Peloton API.  In this function you are able to pass in your `username` and `password`.  If you pass in no value, the system will prompt you for a user name and password.
@@ -163,7 +168,6 @@ To learn about the function, execute the command `?authenticate`
 auth_response <-authenticate()
 head(summary(auth_response))
 ```
-
 
 
 # Authenticated API Calls
@@ -211,6 +215,7 @@ stats <-get_my_stats_list()
 head(summary(stats))
 ```
 
+
 ## Get My Workouts Data Frame
 
 The function `get_workouts_df()` allows the user to gather all individual workouts for a specified user and return the results in a data frame. Note that if no user_id is passsed in, it will use the user id for the authenticated user.  You can also pass in a specified user id.  For example: `get_workouts_df('n7u2739e18a7496fa146b3a42465da78')`.
@@ -227,7 +232,6 @@ workouts <- workouts%>%
 #Nicely display data
 datatable(workouts, extensions = "Scroller", width = 1000, options = list(scrollY = 400, scroller = TRUE, scrollX = 600, pageLength = 5))
 ```
-
 
 
 ## Get My Workouts with Instructor Information Data Frame
@@ -250,10 +254,10 @@ datatable(workouts_and_instructors, extensions = "Scroller", width = 1000, optio
 
 ### Create some Fun Graphs
 
+
 #### Progress Line Chart
 
 When you get your workout stats, you can plot a simple progress line chart with ggplot2.  The color palette is from the fabulous [game of thrones package](https://github.com/aljrico/gameofthrones) by [Alejandro Jiménez](https://twitter.com/aljrico).
-
 
 ```{r fig.width=10,fig.height=5}
 p <- workouts_and_instructors %>%
@@ -270,10 +274,44 @@ p <- workouts_and_instructors %>%
 p
 ```
 
+
+#### Favorite Cycling Instructors Overall
+
+Note that the code for creating this donut plot is from [r-graph-gallery.com](https://www.r-graph-gallery.com/128-ring-or-donut-plot.html).
+
+```{r fig.width=10,fig.height=7}
+
+g <- workouts_and_instructors %>%
+  dplyr::filter(workout.fitness_discipline =='cycling') %>%
+  dplyr::filter(workout.total_video_watch_time_seconds > 300) %>%
+  dplyr::filter(instructor.name !="NA") %>%
+  dplyr::group_by(instructor.name) %>%
+  dplyr::summarize(N = length(instructor.name)) %>%
+  dplyr::mutate(fraction = N/sum(N),
+         ymax =cumsum(fraction),
+         ymin = c(0, head(ymax, n=-1)),
+         label = paste0(instructor.name, ": ", round(fraction,2) * 100, "%"),
+         labelPosition = (ymax + ymin) / 2)
+
+# Create the plot
+ggplot(g, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=instructor.name)) +
+  geom_rect() +
+  scale_fill_got(discrete = TRUE, option = "Margaery") +
+  geom_label(x=4.5, aes(y=labelPosition, label=label), color="white", fontface = "bold", size=3) + # x here controls label position (inner / outer)
+  #scale_color_brewer(palette=15) +
+  coord_polar(theta="y") +
+  xlim(c(0, 5)) +
+  theme_void() +
+  theme(legend.position = "none") +
+  labs(title = "Percentage of Workouts by Instructor",
+       caption = 'Source: @littlemissdata')
+
+```
+
+
 #### Favorite Instructors Month to Month
 
 We can also create a 100% stacked bar chart with the breakdown in percentage of workouts by instructor and month.  
-
 
 ```{r fig.width=10,fig.height=7}
 g <- workouts_and_instructors %>%
@@ -291,10 +329,10 @@ g
 
 ```
 
+
 #### Density of Workouts per Day of Week and Hour Block
 
 We can plot which days of week and hours of day we tend to work out.  The steps below are pretty compact, but the logic is to create the necessary time/date columns with the `mutate` function, filter to only the columns needed with the `select` function, create a summary table of total workouts by hour and day with the`group_by` and `summarize` functions and then create a heatmap with `ggplot` and `geom_tile`.
-
 
 ```{r fig.width=10,fig.height=5}
 
