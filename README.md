@@ -32,3 +32,7 @@ The package offers a set of easy to use functions which allow the user to:
 <a href="https://lgellis.github.io/pelotonR/">
 <img src="tutorial-preview.png" width="900px" align="center" />
 </a>
+
+### 3) Check out two great tutorials using the package
+ - ["A Peloton Data Tribute to my Wife"](https://dustysturner.com/post/the-peloton-api-part-2/) By [Dusty Turner](https://dustysturner.com/post/the-peloton-api-part-2/)
+ - ["My Peloton Instructors"](https://twitter.com/tanya_shapiro/status/1478751309482311681), with code posted [here](https://github.com/tashapiro/TidyTuesday/blob/master/2022/W1/instructor-summary.R) by [Tania Shapiro](https://twitter.com/tanya_shapiro)
