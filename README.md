@@ -22,17 +22,17 @@ The package offers a set of easy to use functions which allow the user to:
 
 # Getting Started
 
-### 1) Please install the package
+### 1) Install the package
 <br/>
 <code> devtools::install_github("lgellis/pelotonR")</code>
 <br/>
  
-### 2) Please check out the [pelotonR getting started guide](https://lgellis.github.io/pelotonR/)
+### 2) Check out the [pelotonR getting started guide](https://lgellis.github.io/pelotonR/)
 <br/>
 <a href="https://lgellis.github.io/pelotonR/">
 <img src="tutorial-preview.png" width="900px" align="center" />
 </a>
 
-### 3) Check out two great tutorials using the package
+### 3) Extend your exploration with these awesome tutorials using the package
  - ["A Peloton Data Tribute to my Wife"](https://dustysturner.com/post/the-peloton-api-part-2/) By [Dusty Turner](https://dustysturner.com/post/the-peloton-api-part-2/)
- - ["My Peloton Instructors"](https://twitter.com/tanya_shapiro/status/1478751309482311681), with code posted [here](https://github.com/tashapiro/TidyTuesday/blob/master/2022/W1/instructor-summary.R) by [Tania Shapiro](https://twitter.com/tanya_shapiro)
+ - ["My Peloton Instructors"](https://twitter.com/tanya_shapiro/status/1478751309482311681), with code posted [here](https://github.com/tashapiro/TidyTuesday/blob/master/2022/W1/instructor-summary.R) by [Tania Shapiro](https://twitter.com/tanya_shapiro).  She also created a really awesome [Peloton Calendar outlined here](https://twitter.com/tanya_shapiro/status/1484883861960024070?s=20&t=xj4HnYwvL2lnQb4OfcGseg).
