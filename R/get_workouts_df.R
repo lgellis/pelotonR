@@ -34,7 +34,7 @@ get_workouts_df <- function(user_id) {
     call <- paste0("https://api.onepeloton.com/api/user/", user_id, "/workouts?page=", i, "&joins=peloton.ride")
     request <- httr::GET(call)
     add_data <- data.table::as.data.table(jsonlite::fromJSON(rawToChar(request$content))$data)
-    workout_df <- dplyr::union_all(workout_df, add_data)
+    workout_df <- rbind(workout_df, add_data, fill=TRUE)
   }
 
   # Perform some formatting
